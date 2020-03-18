@@ -13,6 +13,9 @@ services:
       stack: 67108864
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - ./datasets:/home/root/detectron2_repo/datasets
+      - ../train.json:/home/root/detectron2_repo/train.json
+
     environment:
       - DISPLAY=$DISPLAY
       - NVIDIA_VISIBLE_DEVICES=all
