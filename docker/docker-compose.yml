@@ -14,8 +14,7 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - ./datasets:/home/root/detectron2_repo/datasets
-      - ../train.json:/home/root/detectron2_repo/train.json
-
+      - ./output:/home/root/detectron2_repo/output
     environment:
       - DISPLAY=$DISPLAY
       - NVIDIA_VISIBLE_DEVICES=all

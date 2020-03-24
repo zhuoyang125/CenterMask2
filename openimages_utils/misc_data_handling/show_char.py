@@ -1,0 +1,26 @@
+infile = 'cleanfile.txt'
+
+fin = open(infile)
+i = 52402088
+for line in fin:
+    print(line[i-20])
+    print(line[i-19])
+    print(line[i-18])
+    print(line[i-17])
+    print(line[i-16])
+    print(line[i-15])
+    print(line[i-14])
+    print(line[i-13])
+    print(line[i-12])
+    print(line[i-11])
+    print(line[i-10])
+    print(line[i-9])
+    print(line[i-8])
+    print(line[i-7])
+    print(line[i-6])
+    print(line[i-5])
+    print(line[i-4])
+    print(line[i-3])
+    print(line[i-2])
+    print(line[i-1])
+    print(line[i])

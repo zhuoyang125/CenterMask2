@@ -28,14 +28,14 @@ MODEL:
     NUM_CONV: 2
     CONV_DIM: 128
 DATASETS:
-  TRAIN: ("coco_2017_train",)
-  TEST: ("coco_2017_val",)
+  TRAIN: ("openimages_train",)
+  TEST: ()
 SOLVER:
   CHECKPOINT_PERIOD: 10000
-  IMS_PER_BATCH: 16
-  BASE_LR: 0.01  # Note that RetinaNet uses a different default learning rate
+  IMS_PER_BATCH: 2
+  BASE_LR: 0.0025  # Note that RetinaNet uses a different default learning rate
   STEPS: (60000, 80000)
-  MAX_ITER: 90000
+  MAX_ITER: 120000
 INPUT:
   MIN_SIZE_TRAIN: (580, 600)
   MAX_SIZE_TRAIN: 1000

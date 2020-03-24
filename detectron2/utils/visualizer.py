@@ -480,6 +480,7 @@ class Visualizer:
                 masks = [x["segmentation"] for x in annos]
             else:
                 masks = None
+                print("ERROR")
             if "keypoints" in annos[0]:
                 keypts = [x["keypoints"] for x in annos]
                 keypts = np.array(keypts).reshape(len(annos), -1, 3)

@@ -43,6 +43,9 @@ class TrainingSampler(Sampler):
     def __iter__(self):
         start = self._rank
         yield from itertools.islice(self._infinite_indices(), start, None, self._world_size)
+        #Print each iteration
+        for each in itertools.islice(self._infinite_indices(), start, None, self._world_size):
+            print(each)
 
     def _infinite_indices(self):
         g = torch.Generator()

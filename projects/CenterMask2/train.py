@@ -4,12 +4,14 @@ import json
 from detectron2.structures import BoxMode
 from detectron2.utils.logger import setup_logger
 setup_logger()
+from detectron2.modeling import build_model
+from detectron2.checkpoint import DetectionCheckpointer
 from detectron2.data import DatasetCatalog, MetadataCatalog
 from detectron2.data.datasets import register_coco_instances
 from detectron2.data.datasets import load_coco_json
 from detectron2.engine import DefaultTrainer
 from detectron2.engine import DefaultPredictor
-from detectron2.config import get_cfg
+from centermask.config import get_cfg
 from detectron2 import model_zoo
 import random
 from detectron2.utils.visualizer import Visualizer
@@ -618,15 +620,12 @@ classes = ["Tortoise",
 "Maracas",
 "Helmet"]
 
-
 if __name__ == '__main__':
 
     #Register Datasets
     DatasetCatalog.register('openimages_train', get_train_dicts)
     MetadataCatalog.get('openimages_train').set(thing_classes=classes)
     openimages_train_metadata = MetadataCatalog.get('openimages_train')
-        
-
 
     # Visualizing datasets
     # train_dicts = get_train_dicts()
@@ -638,25 +637,23 @@ if __name__ == '__main__':
     #     cv2.imshow("image", vis.get_image()[:,:,::-1])
     #     cv2.waitKey()
 
-
+    #Training Configs
     cfg = get_cfg()
-    cfg.merge_from_file("configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")
+    cfg.merge_from_file("configs\\centermask\\centermask_lite_V_19_eSE_FPN_ms_4x.yaml")
     cfg.DATASETS.TRAIN = ("openimages_train",)
     cfg.DATASETS.TEST = ()
-    cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")
-    cfg.DATALOADER.NUM_WORKERS = 0
+    cfg.DATALOADER.NUM_WORKERS = 2
     cfg.SOLVER.IMS_PER_BATCH = 2
-    cfg.SOLVER.BASE_LR = 0.0025
-    cfg.SOLVER.MAX_ITER = 120000
+    cfg.SOLVER.BASE_LR = 0.00035
+    cfg.MODEL.WEIGHTS = "configs\\weights\\vovnet19_ese_detectron2.pth"
     cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 8
+    cfg.SOLVER.MAX_ITER = 600000
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 601
+    cfg.MODEL.SEM_SEG_HEAD.NUM_CLASSES = 601
+    cfg.MODEL.RETINANET.NUM_CLASSES = 601
+    cfg.MODEL.FCOS.NUM_CLASSES = 601
 
     os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
     trainer = DefaultTrainer(cfg)
     trainer.resume_or_load(resume=False)
     trainer.train()
-
-
-        
-
-
