@@ -1,0 +1,11 @@
+---
+worksflows:
+  experiment-workflow:
+    steps:
+    -
+      name: "mask rcnn"
+      command: experiment.run_single_node
+      params:
+        command: python train.py
+        modelType: Pytorch
+        
