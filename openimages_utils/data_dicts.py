@@ -2,15 +2,15 @@ import json
 from detectron2.structures import BoxMode
 
 def get_train_dicts():
-    with open("detectron2_repo/open-images/int_category_labels.json") as fp:
+    with open("/floyd/input/open-images/int_category_labels.json") as fp:
         category_labels = json.load(fp)
-    with open("detectron2_repo/open-images/train_XYXY.json") as f:
+    with open("/floyd/input/open-images/train_XYXY.json") as f:
         img_anns = json.load(f)
     train_dicts = []
 
     for img in img_anns['images']:
         record = {}
-        record["file_name"] = "detectron2_repo/open-images/train_resized/" + img["file_name"]
+        record["file_name"] = "/floyd/input/open-images/train_resized/" + img["file_name"]
         record["height"] = img["height"]
         record["width"] = img["width"]
         record["image_id"] = img["id"]

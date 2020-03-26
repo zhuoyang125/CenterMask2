@@ -639,13 +639,13 @@ if __name__ == '__main__':
 
     #Training Configs
     cfg = get_cfg()
-    cfg.merge_from_file("configs\\centermask\\centermask_lite_V_19_eSE_FPN_ms_4x.yaml")
+    cfg.merge_from_file("configs/centermask/centermask_lite_V_19_eSE_FPN_ms_4x.yaml")
     cfg.DATASETS.TRAIN = ("openimages_train",)
     cfg.DATASETS.TEST = ()
     cfg.DATALOADER.NUM_WORKERS = 2
     cfg.SOLVER.IMS_PER_BATCH = 2
     cfg.SOLVER.BASE_LR = 0.00035
-    cfg.MODEL.WEIGHTS = "configs\\weights\\vovnet19_ese_detectron2.pth"
+    cfg.MODEL.WEIGHTS = "configs/weights/vovnet19_ese_detectron2.pth"
     cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 8
     cfg.SOLVER.MAX_ITER = 600000
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 601
