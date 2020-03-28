@@ -629,7 +629,7 @@ if __name__ == '__main__':
 
 
     # Visualizing datasets
-    # train_dicts = get_train_dicts()
+    train_dicts = get_train_dicts()
     # for d in random.sample(train_dicts, 10):
     #     print(d)
     #     img = cv2.imread(d["file_name"])
@@ -646,7 +646,7 @@ if __name__ == '__main__':
     cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")
     cfg.DATALOADER.NUM_WORKERS = 0
     cfg.SOLVER.IMS_PER_BATCH = 2
-    cfg.SOLVER.BASE_LR = 0.0025
+    cfg.SOLVER.BASE_LR = 0.0005
     cfg.SOLVER.MAX_ITER = 120000
     cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 8
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 601
