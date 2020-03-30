@@ -29,8 +29,8 @@ RUN pip install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=Pyt
 RUN git clone https://github.com/zhuoyang125/CenterMask2.git detectron2_repo
 ENV FORCE_CUDA="1"
 ENV TORCH_CUDA_ARCH_LIST="Kepler;Kepler+Tesla;Maxwell;Maxwell+Tegra;Pascal;Volta;Turing"
-RUN pip install -e detectron2_repo
-RUN sudo apt-get install nano
+RUN pip install -e detectron2_repo 
+RUN apt-get update && apt-get install nano
 
 WORKDIR /home/root/detectron2_repo
 
