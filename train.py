@@ -643,7 +643,7 @@ if __name__ == '__main__':
     cfg.merge_from_file("configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")
     cfg.DATASETS.TRAIN = ("openimages_train",)
     cfg.DATASETS.TEST = ()
-    cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")
+    cfg.MODEL.WEIGHTS = 'projects/CenterMask2/configs/model_0199999.pth'
     cfg.DATALOADER.NUM_WORKERS = 0
     cfg.SOLVER.IMS_PER_BATCH = 2
     cfg.SOLVER.BASE_LR = 0.0005
