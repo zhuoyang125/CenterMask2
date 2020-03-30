@@ -645,7 +645,7 @@ if __name__ == '__main__':
     cfg.DATALOADER.NUM_WORKERS = 2
     cfg.SOLVER.IMS_PER_BATCH = 2
     cfg.SOLVER.BASE_LR = 0.00035
-    cfg.MODEL.WEIGHTS = "configs/weights/vovnet19_ese_detectron2.pth"
+    cfg.MODEL.WEIGHTS = "projects/CenterMask2/configs/model_0199999.pth"
     cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 8
     cfg.SOLVER.MAX_ITER = 600000
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 601
