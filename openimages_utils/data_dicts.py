@@ -3,28 +3,17 @@ from detectron2.structures import BoxMode
 
 def get_train_dicts():
     #with open("/floyd/input/open-images/int_category_labels.json") as fp:
-<<<<<<< HEAD
     with open('C:\\Users\\Admin\\Documents\\open-images-0\\int_category_labels.json') as fp:
         category_labels = json.load(fp)
     #with open("/floyd/input/open-images/train_XYXY.json") as f:
     with open('C:\\Users\\Admin\\Documents\\open-images-0\\train_0_XYXY.json') as f:
-=======
-    with open('./datasets/int_category_labels.json') as fp:
-        category_labels = json.load(fp)
-    #with open("/floyd/input/open-images/train_XYXY.json") as f:
-    with open('./datasets/train_XYXY.json') as f:
->>>>>>> refs/remotes/origin/master
         img_anns = json.load(f)
     train_dicts = []
 
     for img in img_anns['images']:
         record = {}
         #record["file_name"] = "/floyd/input/open-images/train_resized/" + img["file_name"]
-<<<<<<< HEAD
         record["file_name"] = "C:\\Users\\Admin\\Documents\\open-images-0\\train_resized\\" + img["file_name"]
-=======
-        record["file_name"] = "./datasets/train_resized/" + img["file_name"]
->>>>>>> refs/remotes/origin/master
         record["height"] = img["height"]
         record["width"] = img["width"]
         record["image_id"] = img["id"]

@@ -1,3 +1,90 @@
+## CenterMask with Open Images
+
+This repo trains CenterMask (built on Detectron2) on Open Images datasets. Credits to Youngwan Lee and Jongyoul Park arxiv: https://arxiv.org/abs/1911.06667 CenterMask original repo: https://github.com/youngwanLEE/centermask2
+
+### Hyperparameter Testing
+
+Comparing 3 sets of training hyperparameters: 
+- gradient clip value 0.5, lr 0.05, lr decay 0.2 x 2 (blue) 
+- gradient clip value 0.5, lr 0.005 (orange)
+- lr 0.002, lr decay 0.2 x 2 (red)
+
+<div align="center">
+<h3>total loss</h3>
+<p></p>
+<img src="https://drive.google.com/uc?export=view&id=1sm8VhmH8CERqKA2EowXexWJxI3I281Vb" width=80%/>
+<!-- <img src="https://drive.google.com/uc?export=view&id=1ueTOzUnrGCrc6bQ0TpCeu9Zbbw4UOjtj" width=40%/>
+<img src="https://drive.google.com/uc?export=view&id=1gwqUv7svQyR9b5td0tWprD4Jpl8gs9dL" width=40%/>
+<img src="https://drive.google.com/uc?export=view&id=1Uzu0cSaYNekiy894rZwq6R5EclUPupMJ" width=40%/>
+<img src="https://drive.google.com/uc?export=view&id=1Uzu0cSaYNekiy894rZwq6R5EclUPupMJ" width=40%/>
+<img src="https://drive.google.com/uc?export=view&id=1TW4FK5mhvRVvMUBG_zXGJ1ryUXMbZuzA" width=40%/> -->
+</div>
+
+### Open Images Training and Results
+
+Mask RCNN and CenterMask trained on Open Images V6 train_0, containing 24,591 images and 57,812 masks of 300 classes. Due to imbalanced distribution amongst classes, repeat factor sampling was used to oversample tail classes, learning rate schedule x2.
+
+*All results measured on NVIDIA Quadro P1000 
+
+|Method|Backbone|Inference Time|mask AP|box AP|
+|:-----:|:----:|:-------:|:--:|:--:|
+|CenterMask|VoVNetV2-19|0.165|5.378|4.933|
+|Mask-RCNN|ResNet-50|0.485|11.453|9.494|
+
+### Side-by-Side Comparison
+<div align="center">
+<h3>CenterMask</h3>
+<img src="https://drive.google.com/uc?export=view&id=1Mox-ZzakSqfoxu32ekCVE3b_Lkk5aGKc" width=80%/>
+<h3>Mask RCNN</h3>
+<img src="https://drive.google.com/uc?export=view&id=1z83DfsQbKLpeat1J-t3lNEuI8DGYf3KZ" width=80%/>
+</div>
+
+### Image or Video Demo
+
+To run inference on images or video, run `CenterMask2/custom_demo.py` for Mask RCNN or `CenterMask2/projects/CenterMask2/custom_demo.py` for CenterMask. Run it with:
+```
+python custom_demo.py --config_file configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml --input input1.jpg input2.jpg --output results/ --confidence_threshold 0.6 --weights model_final.pth
+```
+
+For video inference, replace --input files with --video video.mp4, and --output is name of output video saved in current dir. 
+
+If no --output given, instances are shown in cv2 window
+
+### Training on Open Images
+
+Dataset has to be loaded as a json file in COCO format, together with a folder of training images. Every mask must have an annotation, with at least 6 polygon points in 'segmentation'
+```
+annotation{
+"id": int, 
+"image_id": int,
+"category_id": int, 
+"segmentation": RLE or [polygon], 
+"area": float, 
+"bbox": [x,y,width,height], 
+"iscrowd": 0 or 1
+}
+
+categories[{
+"id": int, 
+"name": str, 
+"supercategory": str
+}]
+```
+
+Change the json file and training image directory for `get_train_dicts()` in `openimages_utils/data_dicts.py` to that of dataset you want to train. 
+
+To train, edit `cfg.merge_from_file('path/to/config/file')` in `train.py` with config file of choice. Load model weights at `cfg.MODEL.WEIGHTS = 'path/to/model/weights'`. Then, simply execute `train.py`
+
+### Validation
+
+Change json file and validation image directory for `get_val_dicts()` in `openimages_utils/data_dicts.py` to that validation dataset.
+
+Run it with
+```
+python validate.py --configs configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml --model_pth model_final.pth --mode evaluate --threshold 0.5
+```
+where --mode is either 'infer' or 'evaluate' on validation images.
+
 ### Requirements
 - Python >= 3.6(Conda)
 - PyTorch 1.3

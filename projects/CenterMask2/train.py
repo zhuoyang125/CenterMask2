@@ -346,7 +346,6 @@ if __name__ == '__main__':
     cfg.DATASETS.TEST = ()
     cfg.DATALOADER.NUM_WORKERS = 2
     cfg.SOLVER.IMS_PER_BATCH = 2
-<<<<<<< HEAD
     cfg.MODEL.WEIGHTS = 'C:\\Users\\Admin\\Documents\\detectron2\\projects\\CenterMask2\\output\\centermask\\CenterMask-Lite-V-19-ms-4x\\model_final_wo_solver_states.pth'
     cfg.SOLVER.BASE_LR = 0.0001
     cfg.SOLVER.GAMMA = 0.2
@@ -358,16 +357,6 @@ if __name__ == '__main__':
     cfg.MODEL.RETINANET.NUM_CLASSES = 300
     cfg.MODEL.FCOS.NUM_CLASSES = 300
 
-=======
-    cfg.SOLVER.BASE_LR = 0.00035
-    cfg.MODEL.WEIGHTS = "projects/CenterMask2/configs/model_0199999.pth"
-    cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 8
-    cfg.SOLVER.MAX_ITER = 600000
-    cfg.MODEL.ROI_HEADS.NUM_CLASSES = 601
-    cfg.MODEL.SEM_SEG_HEAD.NUM_CLASSES = 601
-    cfg.MODEL.RETINANET.NUM_CLASSES = 601
-    cfg.MODEL.FCOS.NUM_CLASSES = 601
->>>>>>> refs/remotes/origin/master
 
     #Gradient Clipping
     # cfg.SOLVER.CLIP_GRADIENTS = CN({"ENABLED": True})
@@ -382,8 +371,5 @@ if __name__ == '__main__':
     trainer = DefaultTrainer(cfg)
     trainer.resume_or_load(resume=False)
     trainer.train()
-<<<<<<< HEAD
 
     
-=======
->>>>>>> refs/remotes/origin/master
