@@ -11,14 +11,12 @@ Comparing 3 sets of training hyperparameters:
 
 
 <h3>total loss</h3>
-<p></p>
 <img src="https://drive.google.com/uc?export=view&id=1sm8VhmH8CERqKA2EowXexWJxI3I281Vb" width=80%/>
 <!-- <img src="https://drive.google.com/uc?export=view&id=1ueTOzUnrGCrc6bQ0TpCeu9Zbbw4UOjtj" width=40%/>
 <img src="https://drive.google.com/uc?export=view&id=1gwqUv7svQyR9b5td0tWprD4Jpl8gs9dL" width=40%/>
 <img src="https://drive.google.com/uc?export=view&id=1Uzu0cSaYNekiy894rZwq6R5EclUPupMJ" width=40%/>
 <img src="https://drive.google.com/uc?export=view&id=1Uzu0cSaYNekiy894rZwq6R5EclUPupMJ" width=40%/>
 <img src="https://drive.google.com/uc?export=view&id=1TW4FK5mhvRVvMUBG_zXGJ1ryUXMbZuzA" width=40%/> -->
-</div>
 
 ### Open Images Training and Results
 
@@ -32,10 +30,12 @@ Mask RCNN and CenterMask trained on Open Images V6 train_0, containing 24,591 im
 |Mask-RCNN|ResNet-50|0.485|11.453|9.494|
 
 ### Side-by-Side Comparison
-<h3>CenterMask</h3>
-<img src="https://drive.google.com/uc?export=view&id=1JVRJb_V021y6rJmIFpQsT6YgeZYpt0Yb" width=50%/>
-<h3>Mask RCNN</h3>
-<img src="https://drive.google.com/uc?export=view&id=1riDeLae4MCAfaxBiXi8cL9EYJRU_1zKG" width=50%/>
+#### CenterMask
+<img src="https://drive.google.com/uc?export=view&id=1JVRJb_V021y6rJmIFpQsT6YgeZYpt0Yb" width=70%/>
+
+#### Mask RCNN
+<img src="https://drive.google.com/uc?export=view&id=1riDeLae4MCAfaxBiXi8cL9EYJRU_1zKG" width=70%/>
+
 ### Image or Video Demo
 
 To run inference on images or video, run `CenterMask2/custom_demo.py` for Mask RCNN or `CenterMask2/projects/CenterMask2/custom_demo.py` for CenterMask. Run it with:
