@@ -5,16 +5,16 @@ from csv import reader
 import os
 import json
 
-image_folder = "C:\\Users\\Admin\\Documents\\detectron2\\openimages_utils\\train_resized"
+image_folder = "C:\\Users\\Admin\\Documents\\open-images-1\\train_resized"
 
 coco_dict = {}
 coco_dict['images'] = []
 coco_dict['annotations'] = []
 coco_dict['categories'] = []
-with open('C:\\Users\\Admin\\Documents\\detectron2\\openimages_utils\\challenge-2019-validation-segmentation-masks.csv') as read_obj:
+with open('C:\\Users\\Admin\\Documents\\open-images-1\\challenge-2019-train-segmentation-masks.csv') as read_obj:
     csv_reader = reader(read_obj)
     csv_list = list(csv_reader)
-with open('C:\\Users\\Admin\\Documents\\detectron2\\openimages_utils\\class-descriptions-boxable.csv') as read_obj:
+with open('C:\\Users\\Admin\\Documents\\open-images-1\\challenge-2019-classes-description-segmentable.csv') as read_obj:
     csv_cat_reader = reader(read_obj)
     cat_list = list(csv_cat_reader)
         
@@ -38,7 +38,7 @@ for image_file in os.listdir(image_folder):
             y_min = y_min_rel * height
             x_max = x_max_rel * width
             y_max = y_max_rel * height
-            mask_image = cv2.imread('C:\\Users\\Admin\\Documents\\detectron2\\openimages_utils\\masks' + '\\' + mask_image_path, 0)
+            mask_image = cv2.imread('C:\\Users\\Admin\\Documents\\open-images-1\\masks' + '\\' + mask_image_path, 0)
             idx = os.path.splitext(mask_image_path)[0]
             print(idx)
             polygons = Mask(mask_image).polygons()
@@ -66,5 +66,5 @@ for i in range(len(cat_list)):
         })
         
 
-with open('train_XYXY.json', 'w') as fp:
+with open('train_1_XYXY.json', 'w') as fp:
     json.dump(coco_dict, fp)

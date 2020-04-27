@@ -7,6 +7,8 @@ inference_test_output
 *.jpg
 *.png
 *.txt
+*.avi
+*.mp4
 
 # compilation and distribution
 __pycache__

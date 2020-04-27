@@ -1,7 +1,7 @@
 import csv
 import json
 
-with open('class-descriptions-boxable.csv') as read_obj:
+with open('C:\\Users\\Admin\\Documents\\open-images-0\\challenge-2019-classes-description-segmentable.csv') as read_obj:
     csv_reader = csv.reader(read_obj)
     csv_list = list(csv_reader)
 

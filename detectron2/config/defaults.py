@@ -232,7 +232,7 @@ _C.MODEL.RPN.NMS_THRESH = 0.7
 _C.MODEL.ROI_HEADS = CN()
 _C.MODEL.ROI_HEADS.NAME = "Res5ROIHeads"
 # Number of foreground classes
-_C.MODEL.ROI_HEADS.NUM_CLASSES = 80
+_C.MODEL.ROI_HEADS.NUM_CLASSES = 300
 # Names of the input feature maps to be used by ROI heads
 # Currently all heads (box, mask, ...) use the same input feature map list
 # e.g., ["p2", "p3", "p4", "p5"] is commonly used for FPN

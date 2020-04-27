@@ -75,6 +75,8 @@ if __name__ == "__main__":
 
     cfg = setup_cfg(args)
 
+    print(len(cfg.DATASETS.TEST))
+
     demo = VisualizationDemo(cfg)
 
     if args.input:

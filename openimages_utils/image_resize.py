@@ -5,8 +5,8 @@ from PIL import Image
 
 #Only images found in masks are resized
 
-folder_path = "C:\\Users\\Admin\\Documents\\detectron2\\datasets\\validation\\train"
-mask_path = "C:\\Users\\Admin\\Documents\\detectron2\\datasets\\validation\\masks"
+folder_path = "C:\\Users\\Admin\\Documents\\open-images-1\\train_1"
+mask_path = "C:\\Users\\Admin\\Documents\\open-images-1\\masks"
 
 def resizing (image_path, mask_path):
 
@@ -41,4 +41,4 @@ while i < len(mask_ids):
 for j in range(len(matching_img)):
     resized = resizing(folder_path + '/' + matching_img[j] + '.jpg', mask_path + '/' + matching_mask[j] + '.png')
     resized = resized.convert("RGB")
-    resized.save('train_resized/' + matching_img[j] + '.jpg', resized.format)
+    resized.save('train_resized_1/' + matching_img[j] + '.jpg', resized.format)

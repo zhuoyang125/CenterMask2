@@ -1,20 +1,18 @@
+import argparse
 import os
-import numpy as np 
-import json
-from detectron2.structures import BoxMode
+import random
+from detectron2.engine import DefaultPredictor, DefaultTrainer
+from detectron2.modeling import build_model
 from detectron2.utils.logger import setup_logger
 setup_logger()
-from detectron2.data import DatasetCatalog, MetadataCatalog
-from detectron2.data.datasets import register_coco_instances
 from detectron2.data.datasets import load_coco_json
-from detectron2.engine import DefaultTrainer
-from detectron2.engine import DefaultPredictor
-from detectron2.config import get_cfg
-from detectron2 import model_zoo
-import random
-from detectron2.utils.visualizer import Visualizer
+from detectron2.utils.visualizer import ColorMode, Visualizer
+from detectron2.evaluation import COCOEvaluator, inference_on_dataset
+from centermask.config import get_cfg
+from detectron2.data import build_detection_test_loader, DatasetCatalog, MetadataCatalog
+from detectron2.checkpoint import DetectionCheckpointer
 import cv2
-from openimages_utils.data_dicts import get_train_dicts
+from openimages_utils.data_dicts import get_val_dicts, get_train_dicts
 
 classes = ["Screwdriver",
 "Light switch",
@@ -317,52 +315,76 @@ classes = ["Screwdriver",
 "Jeans",
 "Dress"]
 
+if __name__ == "__main__":
 
+    #Add arguments
+    parser = argparse.ArgumentParser(description='choose args to infer instances frm sample test images OR evaluate model performance on test dataset')
+    parser.add_argument('--configs', help='path to model config file', required=True)
+    parser.add_argument('--model_pth', help='path to .pth file', required=True)
+    parser.add_argument('--mode', help='choose "infer" or "evaluate" ')
+    parser.add_argument('--threshold', type=float, help='confidence threshold level, float bet 0 and 1', default=0.5)
+    args = parser.parse_args()
+    
+    
+    #Get Datasets
+    DatasetCatalog.register('openimages_val', get_val_dicts)
+    MetadataCatalog.get('openimages_val').set(thing_classes=classes)
+    openimages_val_metadata = MetadataCatalog.get('openimages_val')
 
-if __name__ == '__main__':
-
-    #Register Datasets
     DatasetCatalog.register('openimages_train', get_train_dicts)
     MetadataCatalog.get('openimages_train').set(thing_classes=classes)
     openimages_train_metadata = MetadataCatalog.get('openimages_train')
-        
 
-
-    # Visualizing datasets
-    # train_dicts = get_train_dicts()
-    # for d in random.sample(train_dicts, 30):
-    #     print(d)
+    #Visualizing datasets
+    # val_dicts = get_val_dicts()
+    # for d in random.sample(val_dicts, 10):
     #     img = cv2.imread(d["file_name"])
-    #     visualizer = Visualizer(img[:,:,::-1], metadata=openimages_train_metadata, scale=0.5)
+    #     print(d["file_name"])
+    #     visualizer = Visualizer(img[:,:,::-1], metadata=openimages_val_metadata, scale=0.5)
     #     vis = visualizer.draw_dataset_dict(d)
     #     cv2.imshow("image", vis.get_image()[:,:,::-1])
-    #     cv2.waitKey()
-
+    #     cv2.waitKey(0)
 
     cfg = get_cfg()
-    cfg.merge_from_file(model_zoo.get_config_file('COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml'))
-    cfg.DATASETS.TRAIN = ("openimages_train",)
-    cfg.DATASETS.TEST = ()
-    cfg.MODEL.WEIGHTS = 'output/model_0054999_wo_solver_states.pth'
-    cfg.DATALOADER.NUM_WORKERS = 2
-    cfg.SOLVER.IMS_PER_BATCH = 2
-    cfg.SOLVER.BASE_LR = 0.0007
-    cfg.SOLVER.GAMMA = 0.2
-    cfg.SOLVER.STEPS = (40000,)
-    cfg.SOLVER.MAX_ITER = 100000
-    cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 8
+    cfg.merge_from_file(str(args.configs))
+    cfg.MODEL.WEIGHTS = str(args.model_pth)
+    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = args.threshold
+    cfg.MODEL.FCOS.INFERENCE_TH_TEST = args.threshold
+    cfg.MODEL.PANOPTIC_FPN.COMBINE.INSTANCES_CONFIDENCE_THRESH = args.threshold
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 300
+    cfg.MODEL.SEM_SEG_HEAD.NUM_CLASSES = 300
+    cfg.MODEL.RETINANET.NUM_CLASSES = 300
+    cfg.MODEL.FCOS.NUM_CLASSES = 300
+    cfg.DATASETS.TEST = ("openimages_val",)
+    cfg.DATASETS.TRAIN = ("openimages_train",)
 
-    #Sampler for imbalanced dataset
-    cfg.DATALOADER.SAMPLER_TRAIN = 'RepeatFactorTrainingSampler'
-    cfg.DATALOADER.REPEAT_THRESHOLD = 0.0005
+    predictor = DefaultPredictor(cfg)
+    # trainer = DefaultTrainer(cfg)
 
-    os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
-    trainer = DefaultTrainer(cfg)
-    trainer.resume_or_load(resume=False)
-    trainer.train()
-
-
+    if args.mode == 'infer':
+        val_dicts = get_val_dicts()
+        for d in random.sample(val_dicts, 10):
+            im = cv2.imread(d['file_name'])
+            outputs = predictor(im)
+            v = Visualizer(im[:, :, ::-1],
+                            metadata = openimages_val_metadata,
+                            scale = 0.8,
+                            instance_mode = ColorMode.IMAGE_BW)
+            v = v.draw_instance_predictions(outputs['instances'].to('cpu'))
+            cv2.imshow('image', v.get_image()[:, :, ::-1])
+            cv2.waitKey(0)
+    
+    if args.mode == 'evaluate':
+        print(cfg.DATASETS.TEST[0])
+        trainer = DefaultTrainer(cfg)
+        model = trainer.build_model(cfg)
+        DetectionCheckpointer(model).load(args.model_pth)
+        evaluator = COCOEvaluator(cfg.DATASETS.TEST[0], cfg, False, output_dir="./output/")
+        val_loader = build_detection_test_loader(cfg, "openimages_val")
+        inference_on_dataset(model, val_loader, evaluator)
         
+
+
+
 
 
