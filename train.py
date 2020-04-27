@@ -343,8 +343,13 @@ if __name__ == '__main__':
     cfg.merge_from_file(model_zoo.get_config_file('COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml'))
     cfg.DATASETS.TRAIN = ("openimages_train",)
     cfg.DATASETS.TEST = ()
+<<<<<<< HEAD
     cfg.MODEL.WEIGHTS = 'output/model_0054999_wo_solver_states.pth'
     cfg.DATALOADER.NUM_WORKERS = 2
+=======
+    cfg.MODEL.WEIGHTS = 'projects/CenterMask2/configs/model_0199999.pth'
+    cfg.DATALOADER.NUM_WORKERS = 0
+>>>>>>> refs/remotes/origin/master
     cfg.SOLVER.IMS_PER_BATCH = 2
     cfg.SOLVER.BASE_LR = 0.0007
     cfg.SOLVER.GAMMA = 0.2
