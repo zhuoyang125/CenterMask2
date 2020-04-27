@@ -32,17 +32,10 @@ Mask RCNN and CenterMask trained on Open Images V6 train_0, containing 24,591 im
 |Mask-RCNN|ResNet-50|0.485|11.453|9.494|
 
 ### Side-by-Side Comparison
-<div clear=both display=table>
-	<div float="left" width=33%>
-		<h3>CenterMask</h3>
-		<img src="https://drive.google.com/uc?export=view&id=1JVRJb_V021y6rJmIFpQsT6YgeZYpt0Yb"/>
-       </div>
-       <div float="left" width=33%>
-		<h3>Mask RCNN</h3>
-		<img src="https://drive.google.com/uc?export=view&id=1riDeLae4MCAfaxBiXi8cL9EYJRU_1zKG"/>
-	</div>
-</div>
-
+<h3>CenterMask</h3>
+<img src="https://drive.google.com/uc?export=view&id=1JVRJb_V021y6rJmIFpQsT6YgeZYpt0Yb" width=50%/>
+<h3>Mask RCNN</h3>
+<img src="https://drive.google.com/uc?export=view&id=1riDeLae4MCAfaxBiXi8cL9EYJRU_1zKG" width=50%/>
 ### Image or Video Demo
 
 To run inference on images or video, run `CenterMask2/custom_demo.py` for Mask RCNN or `CenterMask2/projects/CenterMask2/custom_demo.py` for CenterMask. Run it with:
