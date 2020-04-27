@@ -34,9 +34,9 @@ Mask RCNN and CenterMask trained on Open Images V6 train_0, containing 24,591 im
 ### Side-by-Side Comparison
 <div align="center">
 <h3>CenterMask</h3>
-<img src="https://drive.google.com/uc?export=view&id=1Mox-ZzakSqfoxu32ekCVE3b_Lkk5aGKc" width=80%/>
+<img src="https://drive.google.com/uc?export=view&id=1tmSggAnqm9gIrgaoI1gXbm_l8HW62eS4" width=80%/>
 <h3>Mask RCNN</h3>
-<img src="https://drive.google.com/uc?export=view&id=1z83DfsQbKLpeat1J-t3lNEuI8DGYf3KZ" width=80%/>
+<img src="https://drive.google.com/uc?export=view&id=1wNlS80yT8Ul2pp4JlOdqJWn5EgZqwXVc" width=80%/>
 </div>
 
 ### Image or Video Demo
