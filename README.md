@@ -24,10 +24,10 @@ Mask RCNN and CenterMask trained on Open Images V6 train_0, containing 24,591 im
 
 *All results measured on NVIDIA Quadro P1000 
 
-|Method|Backbone|Inference Time|mask AP|box AP|
-|:-----:|:----:|:-------:|:--:|:--:|
-|CenterMask|VoVNetV2-19|0.165|5.378|4.933|
-|Mask-RCNN|ResNet-50|0.485|11.453|9.494|
+|Method|Backbone|Inference Time|mask AP|box AP|full metrics|
+|:-----:|:----:|:-------:|:--:|:--:|:---:|
+|CenterMask|VoVNetV2-19|0.165|5.378|4.933|[metrics](https://drive.google.com/file/d/1IghJjbKcuzghKybMrcribu1J9TPfdsJg/view?usp=sharing)
+|Mask-RCNN|ResNet-50|0.485|11.453|9.494|[metrics](https://drive.google.com/file/d/1OsXHHp_t3np2ZQLvOevwqxlmwwag16CO/view?usp=sharing)
 
 ### Side-by-Side Comparison
 
