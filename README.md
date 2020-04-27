@@ -143,10 +143,6 @@ It is a ground-up rewrite of the previous version,
 [Detectron](https://github.com/facebookresearch/Detectron/),
 and it originates from [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark/).
 
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/1381301/66535560-d3422200-eace-11e9-9123-5535d469db19.png"/>
-</div>
-
 ### What's New
 * It is powered by the [PyTorch](https://pytorch.org) deep learning framework.
 * Includes more features such as panoptic segmentation, densepose, Cascade R-CNN, rotated bounding boxes, etc.
