@@ -9,7 +9,7 @@ Comparing 3 sets of training hyperparameters:
 - gradient clip value 0.5, lr 0.005 (orange)
 - lr 0.002, lr decay 0.2 x 2 (red)
 
-<div align="center">
+
 <h3>total loss</h3>
 <p></p>
 <img src="https://drive.google.com/uc?export=view&id=1sm8VhmH8CERqKA2EowXexWJxI3I281Vb" width=80%/>
@@ -32,9 +32,11 @@ Mask RCNN and CenterMask trained on Open Images V6 train_0, containing 24,591 im
 |Mask-RCNN|ResNet-50|0.485|11.453|9.494|
 
 ### Side-by-Side Comparison
-<div align="center">
+<div align="left">
 <h3>CenterMask</h3>
 <img src="https://drive.google.com/uc?export=view&id=1keqlpQLUN5sbCarpa-7UPPaduOEGvvZy" width=40%/>
+</div>
+<div align="right">
 <h3>Mask RCNN</h3>
 <img src="https://drive.google.com/uc?export=view&id=1ZL-KmI5Ge8BHdGTSmzT3sY5NCM3iei-c" width=40%/>
 </div>
