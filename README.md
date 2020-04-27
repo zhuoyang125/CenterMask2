@@ -11,7 +11,7 @@ Comparing 3 sets of training hyperparameters:
 
 
 <h3>total loss</h3>
-<img src="https://drive.google.com/uc?export=view&id=1sm8VhmH8CERqKA2EowXexWJxI3I281Vb" width=80%/>
+<img src="https://user-images.githubusercontent.com/48168603/80370669-7711d600-8845-11ea-87d0-19dd5365b6ec.jpg" width=80%/>
 <!-- <img src="https://drive.google.com/uc?export=view&id=1ueTOzUnrGCrc6bQ0TpCeu9Zbbw4UOjtj" width=40%/>
 <img src="https://drive.google.com/uc?export=view&id=1gwqUv7svQyR9b5td0tWprD4Jpl8gs9dL" width=40%/>
 <img src="https://drive.google.com/uc?export=view&id=1Uzu0cSaYNekiy894rZwq6R5EclUPupMJ" width=40%/>
