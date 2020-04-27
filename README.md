@@ -85,6 +85,8 @@ python validate.py --configs configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FP
 ```
 where --mode is either 'infer' or 'evaluate' on validation images.
 
+***
+
 ### Requirements
 - Python >= 3.6(Conda)
 - PyTorch 1.3
