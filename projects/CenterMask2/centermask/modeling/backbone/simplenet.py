@@ -125,10 +125,10 @@ class SimpleNet(Backbone):
         # t=self.out(t)
 
         return {
-            'stage1': out1,
-            'stage2': out2,
-            'stage3': out3,
-            'stage4': out4
+            'stage2': out1,
+            'stage3': out2,
+            'stage4': out3,
+            'stage5': out4
         }
     
     def output_shape(self):
@@ -189,3 +189,4 @@ def build_fcos_simplenet_fpn_backbone(cfg, input_shape: ShapeSpec):
         fuse_type=cfg.MODEL.FPN.FUSE_TYPE,
     )
     return backbone
+
