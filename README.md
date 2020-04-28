@@ -9,16 +9,14 @@ Comparing 3 sets of training hyperparameters:
 - gradient clip value 0.5, lr 0.005 (orange)
 - lr 0.002, lr decay 0.2 x 2 (red)
 
-<div align="center">
+
 <h3>total loss</h3>
-<p></p>
-<img src="https://drive.google.com/uc?export=view&id=1sm8VhmH8CERqKA2EowXexWJxI3I281Vb" width=80%/>
+<img src="https://user-images.githubusercontent.com/48168603/80370669-7711d600-8845-11ea-87d0-19dd5365b6ec.jpg" width=80%/>
 <!-- <img src="https://drive.google.com/uc?export=view&id=1ueTOzUnrGCrc6bQ0TpCeu9Zbbw4UOjtj" width=40%/>
 <img src="https://drive.google.com/uc?export=view&id=1gwqUv7svQyR9b5td0tWprD4Jpl8gs9dL" width=40%/>
 <img src="https://drive.google.com/uc?export=view&id=1Uzu0cSaYNekiy894rZwq6R5EclUPupMJ" width=40%/>
 <img src="https://drive.google.com/uc?export=view&id=1Uzu0cSaYNekiy894rZwq6R5EclUPupMJ" width=40%/>
 <img src="https://drive.google.com/uc?export=view&id=1TW4FK5mhvRVvMUBG_zXGJ1ryUXMbZuzA" width=40%/> -->
-</div>
 
 ### Open Images Training and Results
 
@@ -26,18 +24,18 @@ Mask RCNN and CenterMask trained on Open Images V6 train_0, containing 24,591 im
 
 *All results measured on NVIDIA Quadro P1000 
 
-|Method|Backbone|Inference Time|mask AP|box AP|
-|:-----:|:----:|:-------:|:--:|:--:|
-|CenterMask|VoVNetV2-19|0.165|5.378|4.933|
-|Mask-RCNN|ResNet-50|0.485|11.453|9.494|
+|Method|Backbone|Inference Time|mask AP|box AP|full metrics|
+|:-----:|:----:|:-------:|:--:|:--:|:---:|
+|CenterMask|VoVNetV2-19|0.165|5.630|5.193|[metrics](https://drive.google.com/file/d/1IghJjbKcuzghKybMrcribu1J9TPfdsJg/view?usp=sharing)
+|Mask-RCNN|ResNet-50|0.485|11.453|9.494|[metrics](https://drive.google.com/file/d/1OsXHHp_t3np2ZQLvOevwqxlmwwag16CO/view?usp=sharing)
 
 ### Side-by-Side Comparison
-<div align="center">
-<h3>CenterMask</h3>
-<img src="https://drive.google.com/uc?export=view&id=1Mox-ZzakSqfoxu32ekCVE3b_Lkk5aGKc" width=80%/>
-<h3>Mask RCNN</h3>
-<img src="https://drive.google.com/uc?export=view&id=1z83DfsQbKLpeat1J-t3lNEuI8DGYf3KZ" width=80%/>
-</div>
+
+#### CenterMask
+<img src="https://user-images.githubusercontent.com/48168603/80371219-63b33a80-8846-11ea-95e4-03f41a976293.gif" width=60%/>
+
+#### Mask RCNN
+<img src="https://user-images.githubusercontent.com/48168603/80371118-3cf50400-8846-11ea-87cb-9a1d0ba5af7e.gif" width=60%/>
 
 ### Image or Video Demo
 
@@ -84,6 +82,8 @@ Run it with
 python validate.py --configs configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml --model_pth model_final.pth --mode evaluate --threshold 0.5
 ```
 where --mode is either 'infer' or 'evaluate' on validation images.
+
+***
 
 ### Requirements
 - Python >= 3.6(Conda)
@@ -140,10 +140,6 @@ that implements state-of-the-art object detection algorithms.
 It is a ground-up rewrite of the previous version,
 [Detectron](https://github.com/facebookresearch/Detectron/),
 and it originates from [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark/).
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/1381301/66535560-d3422200-eace-11e9-9123-5535d469db19.png"/>
-</div>
 
 ### What's New
 * It is powered by the [PyTorch](https://pytorch.org) deep learning framework.
