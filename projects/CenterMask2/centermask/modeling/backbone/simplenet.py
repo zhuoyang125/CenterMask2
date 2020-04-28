@@ -46,6 +46,8 @@ class SimpleNet(Backbone):
         self.batchnorm12 = nn.BatchNorm2d(256, eps=1e-05, momentum=0.05, affine=True, track_running_stats=True)
         self.batchnorm13 = nn.BatchNorm2d(256, eps=1e-05, momentum=0.05, affine=True, track_running_stats=True)
         
+        self.out = nn.Linear(in_features=256*1*1, out_features=100)
+        
         self._out_features = ["stage2", "stage3", "stage4", "stage5"]
         self._out_features = out_features
         self._out_feature_channels = {"stage2": 256, "stage3": 512, "stage4": 2048, "stage5": 256}
