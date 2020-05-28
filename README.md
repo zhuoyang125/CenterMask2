@@ -28,8 +28,8 @@ Mask RCNN and CenterMask trained on Open Images V6, containing 24,591 images and
 |:-----:|:----:|:-------:|:--:|:--:|:---:|
 |CenterMask|VoVNetV2-19|0.16|15.513|14.594|[metrics](https://drive.google.com/file/d/1esmLMGEiaRPW4XYz31EjxqGDIuQO2YDG/view?usp=sharing)
 |Mask-RCNN|ResNet-50|0.48|17.765|15.512|[metrics](https://drive.google.com/file/d/17hxrIMGy0Z8N-xrZKqLNr87MjHIp5Ct8/view?usp=sharing)
-|CenterMask2|SimpleNet|0.56|7.944|7.073|[metrics](https://drive.google.com/file/d/1N0qXBcV0PLj6YXUYABL3Co-jDoLOUbp0/view?usp=sharing)
-|CenterMask2|EfficientNet-B0|0.29|3.753|3.345|[metrics](https://drive.google.com/file/d/1wa4Sd-2XVZFeWEy0uIrjNXIRRKlCBwTO/view?usp=sharing)
+|CenterMask|SimpleNet|0.56|7.944|7.073|[metrics](https://drive.google.com/file/d/1N0qXBcV0PLj6YXUYABL3Co-jDoLOUbp0/view?usp=sharing)
+|CenterMask|EfficientNet-B0|0.29|3.753|3.345|[metrics](https://drive.google.com/file/d/1wa4Sd-2XVZFeWEy0uIrjNXIRRKlCBwTO/view?usp=sharing)
 
 ### Side-by-Side Comparison
 
