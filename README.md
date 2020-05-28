@@ -20,14 +20,16 @@ Comparing 3 sets of training hyperparameters:
 
 ### Open Images Training and Results
 
-Mask RCNN and CenterMask trained on Open Images V6 train_0, containing 24,591 images and 57,812 masks of 300 classes. Due to imbalanced distribution amongst classes, repeat factor sampling was used to oversample tail classes, learning rate schedule x2.
+Mask RCNN and CenterMask trained on Open Images V6, containing 24,591 images and 57,812 masks of 300 classes. Due to imbalanced distribution amongst classes, repeat factor sampling was used to oversample tail classes, learning rate schedule x2.
 
 *All results measured on NVIDIA Quadro P1000 
 
-|Method|Backbone|Inference Time|mask AP|box AP|full metrics|
+|Method|Backbone|Inference Time(s)|mask AP|box AP|full metrics|
 |:-----:|:----:|:-------:|:--:|:--:|:---:|
-|CenterMask|VoVNetV2-19|0.165|9.032|8.400|[metrics](https://drive.google.com/file/d/1FxqOrYQa9lfQCKnSZDb_Cw6GkbPtjE37/view?usp=sharing)
-|Mask-RCNN|ResNet-50|0.485|11.453|9.494|[metrics](https://drive.google.com/file/d/1OsXHHp_t3np2ZQLvOevwqxlmwwag16CO/view?usp=sharing)
+|CenterMask|VoVNetV2-19|0.16|15.513|14.594|[metrics](https://drive.google.com/file/d/1esmLMGEiaRPW4XYz31EjxqGDIuQO2YDG/view?usp=sharing)
+|Mask-RCNN|ResNet-50|0.48|17.765|15.512|[metrics](https://drive.google.com/file/d/17hxrIMGy0Z8N-xrZKqLNr87MjHIp5Ct8/view?usp=sharing)
+|CenterMask|SimpleNet|0.56|7.944|7.073|[metrics](https://drive.google.com/file/d/1N0qXBcV0PLj6YXUYABL3Co-jDoLOUbp0/view?usp=sharing)
+|CenterMask|EfficientNet-B0|0.29|3.753|3.345|[metrics](https://drive.google.com/file/d/1wa4Sd-2XVZFeWEy0uIrjNXIRRKlCBwTO/view?usp=sharing)
 
 ### Side-by-Side Comparison
 
