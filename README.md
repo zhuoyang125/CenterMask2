@@ -75,6 +75,8 @@ Change the json file and training image directory for `get_train_dicts()` in `op
 
 To train, edit `cfg.merge_from_file('path/to/config/file')` in `train.py` with config file of choice. Load model weights at `cfg.MODEL.WEIGHTS = 'path/to/model/weights'`. Then, simply execute `train.py`
 
+Training with EfficientNet backbone requires installation of Pytorch EfficientNet from (https://github.com/lukemelas/EfficientNet-PyTorch), files added to 'centermask/modeling/backbone' folder. The pretrained model is loaded in `efficientnet.py` 
+
 ### Validation
 
 Change json file and validation image directory for `get_val_dicts()` in `openimages_utils/data_dicts.py` to that validation dataset.
