@@ -33,11 +33,17 @@ Mask RCNN and CenterMask trained on Open Images V6, containing 24,591 images and
 
 ### Side-by-Side Comparison
 
-#### CenterMask
-<img src="https://user-images.githubusercontent.com/48168603/80371219-63b33a80-8846-11ea-95e4-03f41a976293.gif" width=60%/>
+#### CenterMask-VoVNet
+<img src="https://user-images.githubusercontent.com/48168603/83113962-2c21f300-a07d-11ea-8064-8ece48094902.gif" width=60%/>
 
 #### Mask RCNN
-<img src="https://user-images.githubusercontent.com/48168603/80371118-3cf50400-8846-11ea-87cb-9a1d0ba5af7e.gif" width=60%/>
+<img src="https://user-images.githubusercontent.com/48168603/83113916-1e6c6d80-a07d-11ea-9a71-47943c7bfd87.gif" width=60%/>
+
+#### CenterMask-SimpleNet
+<img src="https://user-images.githubusercontent.com/48168603/83113996-3643f180-a07d-11ea-8f1d-16ce986c7a6c.gif" width=60%/>
+
+#### CenterMask-EfficientNetB0
+<img src="https://user-images.githubusercontent.com/48168603/83113946-262c1200-a07d-11ea-9fc7-efa312f9aa00.gif" width=60%/>
 
 ### Image or Video Demo
 
